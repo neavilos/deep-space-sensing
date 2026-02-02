@@ -1,0 +1,9 @@
+{
+  "name": "deep-space-sensing",
+  "version": "1.0.0",
+  "title": "Deep Space Sensing",
+  "author": "neavilos",
+  "factorio_version": "2.0",
+  "description": "Discover distant space locations via observation satellites. Technologies with unlock-space-location effects can be converted to satellite-based discovery.",
+  "dependencies": ["base >= 2.0", "space-age >= 2.0"]
+}

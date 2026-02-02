@@ -1,0 +1,142 @@
+data:extend({
+	{
+		type = "technology",
+		name = "deep-space-sensing",
+		icon = "__base__/graphics/icons/satellite.png",
+		icon_size = 64,
+		effects = {
+			{
+				type = "unlock-recipe",
+				recipe = "observation-satellite",
+			},
+			{
+				type = "nothing",
+				use_icon_overlay_constant = true,
+				icon = "__base__/graphics/icons/satellite.png",
+				icon_size = 64,
+				effect_description = "Launch [item=observation-satellite] to locate celestial bodies in deep space.",
+			},
+		},
+		unit = {
+			count = 5000,
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "production-science-pack", 1 },
+				{ "utility-science-pack", 1 },
+				{ "space-science-pack", 1 },
+				{ "metallurgic-science-pack", 1 },
+				{ "electromagnetic-science-pack", 1 },
+			},
+			time = 60,
+		},
+		prerequisites = {
+			"radar",
+			"solar-energy",
+			"metallurgic-science-pack",
+			"electromagnetic-science-pack",
+			"utility-science-pack",
+			"production-science-pack",
+		},
+	},
+	-- Infinite tech for satellite efficiency
+	{
+		type = "technology",
+		name = "observation-satellite-efficiency",
+		icon = "__base__/graphics/icons/satellite.png",
+		icon_size = 64,
+		effects = {
+			{
+				type = "nothing",
+				use_icon_overlay_constant = true,
+				icon = "__base__/graphics/icons/satellite.png",
+				icon_size = 64,
+				effect_description = { "deep-space-sensing.satellite-efficiency-bonus" },
+			},
+		},
+		unit = {
+			count_formula = "1000 * (1.5 ^ L)",
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "production-science-pack", 1 },
+				{ "utility-science-pack", 1 },
+				{ "space-science-pack", 1 },
+				{ "cryogenic-science-pack", 1 },
+			},
+			time = 60,
+		},
+		max_level = "infinite",
+		prerequisites = { "cryogenic-science-pack" },
+		upgrade = true,
+	},
+	-- Infinite tech for orbital capacity
+	{
+		type = "technology",
+		name = "orbital-capacity-upgrade",
+		icon = "__base__/graphics/icons/satellite.png",
+		icon_size = 64,
+		effects = {
+			{
+				type = "nothing",
+				use_icon_overlay_constant = true,
+				icon = "__base__/graphics/icons/satellite.png",
+				icon_size = 64,
+				effect_description = { "deep-space-sensing.orbital-capacity-bonus" },
+			},
+		},
+		unit = {
+			count_formula = "20000 * L",
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "production-science-pack", 1 },
+				{ "utility-science-pack", 1 },
+				{ "space-science-pack", 1 },
+				{ "electromagnetic-science-pack", 1 },
+			},
+			time = 60,
+		},
+		max_level = "infinite",
+		prerequisites = { "deep-space-sensing", "electromagnetic-science-pack" },
+		upgrade = true,
+	},
+	-- Infinite tech for satellite durability (reduces attrition)
+	{
+		type = "technology",
+		name = "satellite-synchronization",
+		icon = "__base__/graphics/icons/satellite.png",
+		icon_size = 64,
+		effects = {
+			{
+				type = "nothing",
+				use_icon_overlay_constant = true,
+				icon = "__base__/graphics/icons/satellite.png",
+				icon_size = 64,
+				effect_description = { "deep-space-sensing.satellite-synchronization-bonus" },
+			},
+		},
+		unit = {
+			count_formula = "1000 * (1.8 ^ L)",
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "production-science-pack", 1 },
+				{ "utility-science-pack", 1 },
+				{ "space-science-pack", 1 },
+				{ "metallurgic-science-pack", 1 },
+				{ "electromagnetic-science-pack", 1 },
+				{ "agricultural-science-pack", 1 },
+				{ "cryogenic-science-pack", 1 },
+			},
+			time = 60,
+		},
+		max_level = "infinite",
+		prerequisites = { "cryogenic-science-pack" },
+		upgrade = true,
+	},
+})
