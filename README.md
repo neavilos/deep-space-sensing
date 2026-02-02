@@ -85,8 +85,8 @@ Hover over planet entries to see exact attrition percentages.
 Three infinite research technologies improve your satellite network:
 
 - **Observation Satellite Efficiency:** +10% contribution per level (requires cryogenic science)
-- **Orbital Capacity Upgrade:** +10% capacity per level (requires deep-space-sensing)
-- **Satellite Durability:** +10% durability per level, reducing attrition (requires deep-space-sensing)
+- **Orbital Capacity Upgrade:** +10% capacity per level (requires electromagnetic science)
+- **Orbital Synchronization:** +10% durability per level, reducing attrition (requires cryogenic science)
 
 ## For Mod Developers
 
@@ -104,6 +104,8 @@ To make a space location discoverable via deep space sensing:
     deep_space_sensing_properties = {
         base_contribution_scale = 0.01,
         decay_scale = 25,
+        orbital_capacity = 500,
+        attrition_rate = 0.001,
     },
 }
 ```

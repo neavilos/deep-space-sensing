@@ -1,8 +1,9 @@
 data:extend({
+	{
 		type = "technology",
 		name = "deep-space-sensing",
-		icon = "__base__/graphics/icons/satellite.png",
-		icon_size = 64,
+		icon = "__deep-space-sensing__/graphics/icons/observation-satellite.png",
+		icon_size = 256,
 		effects = {
 			{
 				type = "unlock-recipe",
@@ -43,14 +44,14 @@ data:extend({
 	{
 		type = "technology",
 		name = "deep-space-sensing-observation-satellite-efficiency",
-		icon = "__base__/graphics/icons/satellite.png",
-		icon_size = 64,
+		icons = util.technology_icon_constant_productivity(
+			"__deep-space-sensing__/graphics/icons/observation-satellite.png",
+			256
+		),
 		effects = {
 			{
 				type = "nothing",
 				use_icon_overlay_constant = true,
-				icon = "__base__/graphics/icons/satellite.png",
-				icon_size = 64,
 				effect_description = { "deep-space-sensing.satellite-efficiency-bonus" },
 			},
 		},
@@ -75,14 +76,14 @@ data:extend({
 	{
 		type = "technology",
 		name = "deep-space-sensing-orbital-capacity-upgrade",
-		icon = "__base__/graphics/icons/satellite.png",
-		icon_size = 64,
+		icons = util.technology_icon_constant_stack_size(
+			"__deep-space-sensing__/graphics/icons/observation-satellite.png",
+			256
+		),
 		effects = {
 			{
 				type = "nothing",
 				use_icon_overlay_constant = true,
-				icon = "__base__/graphics/icons/satellite.png",
-				icon_size = 64,
 				effect_description = { "deep-space-sensing.orbital-capacity-bonus" },
 			},
 		},
@@ -107,8 +108,10 @@ data:extend({
 	{
 		type = "technology",
 		name = "deep-space-sensing-satellite-synchronization",
-		icon = "__base__/graphics/icons/satellite.png",
-		icon_size = 64,
+		icons = util.technology_icon_constant_followers(
+			"__deep-space-sensing__/graphics/icons/observation-satellite.png",
+			256
+		),
 		effects = {
 			{
 				type = "nothing",

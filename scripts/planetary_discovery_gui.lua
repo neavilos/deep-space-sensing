@@ -160,6 +160,26 @@ local function show_network_status(network_flow, player, current_target)
 			caption = { "deep-space-sensing.efficiency-bonus-display", string.format("%.0f", bonus_percent) },
 		})
 	end
+
+	-- Show capacity bonus if any
+	local capacity_multiplier = sensing.get_capacity_multiplier(player.force)
+	if capacity_multiplier > 1.0 then
+		local bonus_percent = (capacity_multiplier - 1.0) * 100
+		network_flow.add({
+			type = "label",
+			caption = { "deep-space-sensing.capacity-bonus-display", string.format("%.0f", bonus_percent) },
+		})
+	end
+
+	-- Show durability bonus if any
+	local durability_multiplier = sensing.get_durability_multiplier(player.force)
+	if durability_multiplier > 1.0 then
+		local bonus_percent = (durability_multiplier - 1.0) * 100
+		network_flow.add({
+			type = "label",
+			caption = { "deep-space-sensing.synchronization-bonus-display", string.format("%.0f", bonus_percent) },
+		})
+	end
 end
 
 --- Shows satellite strength list
