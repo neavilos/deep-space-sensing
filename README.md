@@ -126,7 +126,7 @@ To make a space location discoverable via deep space sensing:
         order = "d-a",
         trigger_description = {
             "",
-            "Launch [item=observation-satellite] and scan for ",
+            "Launch [item=deep-space-sensing-observation-satellite] and scan for ",
             "[planet=your-planet]",
             " via Deep Space Sensing.",
         }
@@ -211,7 +211,7 @@ Description shown in the technology tree for the research trigger.
 ```lua
 trigger_description = {
     "",
-    "Launch [item=observation-satellite] and scan for ",
+    "Launch [item=deep-space-sensing-observation-satellite] and scan for ",
     "[planet=your-planet]",
     " via Deep Space Sensing.",
 }

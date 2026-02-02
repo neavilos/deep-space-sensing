@@ -1,5 +1,4 @@
 data:extend({
-	{
 		type = "technology",
 		name = "deep-space-sensing",
 		icon = "__base__/graphics/icons/satellite.png",
@@ -7,14 +6,14 @@ data:extend({
 		effects = {
 			{
 				type = "unlock-recipe",
-				recipe = "observation-satellite",
+				recipe = "deep-space-sensing-observation-satellite",
 			},
 			{
 				type = "nothing",
 				use_icon_overlay_constant = true,
 				icon = "__base__/graphics/icons/satellite.png",
 				icon_size = 64,
-				effect_description = "Launch [item=observation-satellite] to locate celestial bodies in deep space.",
+				effect_description = "Launch [item=deep-space-sensing-observation-satellite] to locate celestial bodies in deep space.",
 			},
 		},
 		unit = {
@@ -43,7 +42,7 @@ data:extend({
 	-- Infinite tech for satellite efficiency
 	{
 		type = "technology",
-		name = "observation-satellite-efficiency",
+		name = "deep-space-sensing-observation-satellite-efficiency",
 		icon = "__base__/graphics/icons/satellite.png",
 		icon_size = 64,
 		effects = {
@@ -75,7 +74,7 @@ data:extend({
 	-- Infinite tech for orbital capacity
 	{
 		type = "technology",
-		name = "orbital-capacity-upgrade",
+		name = "deep-space-sensing-orbital-capacity-upgrade",
 		icon = "__base__/graphics/icons/satellite.png",
 		icon_size = 64,
 		effects = {
@@ -107,7 +106,7 @@ data:extend({
 	-- Infinite tech for satellite durability (reduces attrition)
 	{
 		type = "technology",
-		name = "satellite-synchronization",
+		name = "deep-space-sensing-satellite-synchronization",
 		icon = "__base__/graphics/icons/satellite.png",
 		icon_size = 64,
 		effects = {

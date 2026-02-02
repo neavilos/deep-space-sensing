@@ -53,7 +53,7 @@ constants.GUI = {
 }
 
 --- Item name for the observation satellite
-constants.OBSERVATION_SATELLITE_ITEM = "observation-satellite"
+constants.OBSERVATION_SATELLITE_ITEM = "deep-space-sensing-observation-satellite"
 
 --- Quality strength multipliers for satellites
 --- Higher quality satellites contribute more to discovery chance

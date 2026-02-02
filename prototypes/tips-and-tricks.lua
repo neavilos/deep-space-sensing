@@ -12,7 +12,7 @@ data:extend({
     {
         type = "tips-and-tricks-item",
         name = "deep-space-sensing-overview",
-        tag = "[item=observation-satellite]",
+        tag = "[item=deep-space-sensing-observation-satellite]",
         category = "deep-space-sensing",
         order = "a",
         trigger = {

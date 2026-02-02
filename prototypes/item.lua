@@ -1,7 +1,7 @@
 data:extend({
 	{
 		type = "item",
-		name = "observation-satellite",
+		name = "deep-space-sensing-observation-satellite",
 		icon = "__base__/graphics/icons/satellite.png",
 		subgroup = "deep-space-sensing",
 		stack_size = 1,

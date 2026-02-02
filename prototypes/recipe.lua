@@ -1,7 +1,7 @@
 data:extend({
 	{
 		type = "recipe",
-		name = "observation-satellite",
+		name = "deep-space-sensing-observation-satellite",
 		category = "electronics",
 		subgroup = "deep-space-sensing",
 		enabled = false,
@@ -16,7 +16,7 @@ data:extend({
 			{ type = "item", name = "superconductor", amount = 50 },
 		},
 		results = {
-			{ type = "item", name = "observation-satellite", amount = 1 },
+			{ type = "item", name = "deep-space-sensing-observation-satellite", amount = 1 },
 		},
 	},
 })

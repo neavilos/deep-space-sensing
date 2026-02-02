@@ -253,7 +253,7 @@ end
 --- @param force LuaForce The force to check
 --- @return number multiplier The efficiency multiplier (1.0 + 0.1 per level)
 function deep_space_sensing.get_efficiency_multiplier(force)
-	local tech = force.technologies["observation-satellite-efficiency"]
+	local tech = force.technologies["deep-space-sensing-observation-satellite-efficiency"]
 	if tech then
 		-- For infinite techs: level = next level to research after completing current
 		-- After completing level N, tech.level becomes N+1
@@ -268,7 +268,7 @@ end
 --- @param force LuaForce The force to check
 --- @return number multiplier The capacity multiplier (1.0 + 0.1 per level)
 function deep_space_sensing.get_capacity_multiplier(force)
-	local tech = force.technologies["orbital-capacity-upgrade"]
+	local tech = force.technologies["deep-space-sensing-orbital-capacity-upgrade"]
 	if tech then
 		local completed_levels = math.max(0, tech.level - 1)
 		return 1.0 + (0.10 * completed_levels)
@@ -280,7 +280,7 @@ end
 --- @param force LuaForce The force to check
 --- @return number multiplier The durability multiplier (attrition divided by this)
 function deep_space_sensing.get_durability_multiplier(force)
-	local tech = force.technologies["satellite-synchronization"]
+	local tech = force.technologies["deep-space-sensing-satellite-synchronization"]
 	if tech then
 		local completed_levels = math.max(0, tech.level - 1)
 		return 1.0 + (0.10 * completed_levels)

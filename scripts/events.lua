@@ -37,8 +37,8 @@ script.on_event(defines.events.on_research_finished, function(event)
     end
     
     -- Refresh GUI when upgrade techs are researched (values will change)
-    if event.research.name == "observation-satellite-efficiency"
-        or event.research.name == "orbital-capacity-upgrade"
+    if event.research.name == "deep-space-sensing-observation-satellite-efficiency"
+        or event.research.name == "deep-space-sensing-orbital-capacity-upgrade"
         or event.research.name == "satellite-durability" then
         planetary_discovery_gui.refresh_all_guis()
     end

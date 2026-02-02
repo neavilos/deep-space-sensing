@@ -114,7 +114,7 @@ end
 local opted_in_locations = utils.get_opted_in_locations()
 
 local tech = data.raw.technology["deep-space-sensing"]
-local recipe = data.raw.recipe["observation-satellite"]
+local recipe = data.raw.recipe["deep-space-sensing-observation-satellite"]
 
 if not tech or not recipe then
 	return -- Tech/recipe not loaded yet, skip
