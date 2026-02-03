@@ -23,31 +23,40 @@ When you launch an observation satellite, its quality determines its strength:
 - Epic: 2.0
 - Legendary: 2.5
 
-**2. Per-Planet Contribution:**
+**2. Orbital Capacity:**
 
-Each planet's total satellite strength contributes to discovering a target based on distance and both observer and target properties:
+Each planet has a maximum orbital capacity for satellites. Satellites over capacity contribute with exponential decay:
+```
+effective_count = capacity + overflow × e^(-overflow / 50)
+```
+Where `overflow = satellite_count - capacity`. This means massive overfilling provides diminishing returns.
+
+**3. Per-Planet Contribution:**
+
+Each planet's effective satellite strength contributes to discovering a target based on distance and both observer and target properties:
 ```
 contribution_from_planet = base_contribution_scale × e^(-distance / observer_decay) × e^(-distance / target_decay)
 ```
 Where:
+- `base_contribution_scale` = Observer planet's base scale factor (how effective its satellites are at sensing)
 - `distance` = Euclidean distance between observer planet and target on the star map (based on the space-location's magnitude and orientation, literally interpreting Factorio's stationary orbits)
 - `observer_decay` = Observer planet's `decay_scale` (how well its satellites observe distant objects)
 - `target_decay` = Target's `decay_scale` (how obscure/faint the target is)
 - Signal degrades from BOTH observer limitations AND target properties
 - With both decay=25 at distance=50: contribution ≈ 1.8% of base (vs 13.5% with single decay)
 
-**3. Total Network Strength:**
+**4. Total Network Strength:**
 ```
-total_strength = Σ (strength_on_planet × contribution_from_planet)
+total_strength = Σ (effective_count_on_planet × contribution_from_planet)
 ```
 
-Where `strength_on_planet` is the sum of all quality-adjusted satellite strengths orbiting that planet.
+Where `effective_count_on_planet` is the capacity-adjusted sum of quality-weighted satellite strengths orbiting that planet.
 
-**4. Minimum Strength Requirement:**
+**5. Minimum Strength Requirement:**
 
 Before scanning can begin, the effective network strength (calculated above) must meet the target's `minimum_strength` requirement. This is the same distance-adjusted calculation, meaning satellites closer to the target count more toward meeting the requirement.
 
-**5. Discovery Chance Per Scan:**
+**6. Discovery Chance Per Scan:**
 ```
 discovery_chance = total_strength × efficiency_bonus × e^(-hardness × global_multiplier)
 ```
@@ -58,14 +67,6 @@ Where:
 - Exponential decay means hardness=4 is ~1.8% discovery rate per unit strength
 
 Scans occur every 60 seconds. Each scan has `discovery_chance` probability of success.
-
-**6. Orbital Capacity:**
-
-Each planet has a maximum orbital capacity for satellites. Satellites over capacity contribute with exponential decay:
-```
-effective_count = capacity + overflow × e^(-overflow / 50)
-```
-Where `overflow = satellite_count - capacity`. This means massive overfilling provides diminishing returns.
 
 **7. Satellite Attrition:**
 
