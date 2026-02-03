@@ -88,7 +88,7 @@ The GUI shows capacity status with color coding:
 - **White text:** Safe (below capacity)
 - **Orange text:** Attrition active (at or above capacity)
 
-Hover over planet entries to see exact attrition percentages.
+The attrition rate will appear once the capacity is exceed.
 
 **8. Infinite Research Technologies:**
 
