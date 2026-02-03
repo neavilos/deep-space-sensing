@@ -42,7 +42,9 @@ distance_factor = e^(-distance / observer_decay) × e^(-distance / target_decay)
 contribution_from_planet = base_contribution_scale × distance_factor
 ```
 
-The `distance_factor` is what the GUI shows as "→ X effective" - the proportion of strength that reaches the target after distance decay.
+The `base_contribution_factor` is what is used to show the planet's natural observation strength, without distance factored in. The GUI uses this value and multiplies it by the effective_count to show the strength of the network over that planet.
+The `distance_factor` is what is used to punish the base_contribution_factor by ambient-environmental issues (the observer planet has a dust field around it and the target planet has low albedo for example).
+The `contribution_from_planet` is what the GUI shows as "→ X effective" - the proportion of strength that reaches the target after distance decay.
 
 Where:
 - `base_contribution_scale` = Observer planet's base scale factor (how effective its satellites are at sensing)
