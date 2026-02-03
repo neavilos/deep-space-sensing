@@ -25,11 +25,14 @@ When you launch an observation satellite, its quality determines its strength:
 
 **2. Orbital Capacity:**
 
-Each planet has a maximum orbital capacity for satellites. Satellites over capacity contribute with exponential decay:
+Each planet has a maximum orbital capacity for satellites. Satellites over capacity contribute with diminishing returns:
+- If `satellite_count ≤ capacity`: all satellites contribute fully
+- If `satellite_count > capacity`: let `overflow = satellite_count - capacity`, then:
 ```
 effective_count = capacity + overflow × e^(-overflow / 50)
 ```
-Where `overflow = satellite_count - capacity`. This means massive overfilling provides diminishing returns.
+
+This means massive overfilling provides little benefit beyond capacity.
 
 **3. Per-Planet Contribution:**
 
