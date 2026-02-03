@@ -36,17 +36,21 @@ This means massive overfilling provides little benefit beyond capacity.
 
 **3. Per-Planet Contribution:**
 
-Each planet's effective satellite strength contributes to discovering a target based on distance and both observer and target properties:
+Each planet's effective satellite strength contributes to discovering a target based on distance:
 ```
-contribution_from_planet = base_contribution_scale × e^(-distance / observer_decay) × e^(-distance / target_decay)
+distance_factor = e^(-distance / observer_decay) × e^(-distance / target_decay)
+contribution_from_planet = base_contribution_scale × distance_factor
 ```
+
+The `distance_factor` is what the GUI shows as "→ X effective" - the proportion of strength that reaches the target after distance decay.
+
 Where:
 - `base_contribution_scale` = Observer planet's base scale factor (how effective its satellites are at sensing)
-- `distance` = Euclidean distance between observer planet and target on the star map (based on the space-location's magnitude and orientation, literally interpreting Factorio's stationary orbits)
+- `distance` = Euclidean distance between observer planet and target on the star map
 - `observer_decay` = Observer planet's `decay_scale` (how well its satellites observe distant objects)
 - `target_decay` = Target's `decay_scale` (how obscure/faint the target is)
 - Signal degrades from BOTH observer limitations AND target properties
-- With both decay=25 at distance=50: contribution ≈ 1.8% of base (vs 13.5% with single decay)
+- With both decay=25 at distance=50: distance_factor ≈ 1.8% (vs 13.5% with single decay)
 
 **4. Total Network Strength:**
 ```
