@@ -241,3 +241,13 @@ Users can edit which locations use satellite discovery in Settings â†’ Startup â
 /c remote.call("deep-space-sensing", "add_satellites", "nauvis", 1000)
 /c remote.call("deep-space-sensing", "rebuild_sensing")
 ```
+
+## TODO
+
+- **Migrate to ModData:** Replace `custom_tooltip_fields` with ModData for passing configuration from data stage to control stage. This is a cleaner approach for inter-stage data transfer.
+
+- **Separate satellite count from strength:** Currently satellite count and quality-weighted strength are conflated. These should be tracked separately so that:
+  - Orbital capacity and attrition are based on raw satellite count
+  - Network strength contributions are based on quality-weighted strength
+  
+  This would allow 100 legendary satellites to count as 100 for capacity purposes but contribute 250 strength.
