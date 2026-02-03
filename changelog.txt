@@ -1,0 +1,20 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+Date: 2026-02-02
+  Changes:
+    - Added thumbnail.png for mod portal display
+    - Updated README with dedicated GUI section explaining all interface elements
+    - Improved documentation structure and clarity for users and mod developers
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 2026-02-02
+  Features:
+    - Initial release
+    - Satellite-based discovery system for space locations
+    - GUI interface for selecting scan targets and monitoring network strength
+    - Orbital capacity system with overflow penalties
+    - Satellite attrition mechanics for orbital crowding
+    - Three infinite research technologies (efficiency, capacity, synchronization)
+    - Automatic conversion of unlock-space-location technologies to scripted research
+    - API for mod developers to register custom locations
+    - Configurable defaults via startup settings

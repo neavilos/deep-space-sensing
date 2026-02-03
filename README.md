@@ -10,6 +10,28 @@ This mod automatically converts technologies with `unlock-space-location` effect
 
 Once installed, technologies that unlock space locations will require satellite-based discovery instead of traditional science pack research. Launch observation satellites into orbit and use the Planetary Discovery interface (button in top bar) to select targets and track progress.
 
+### Using the GUI
+
+Open the Planetary Discovery interface from the top bar button to see:
+
+**Network Status Panel (Left):**
+- Current scan progress and next scan timer
+- Research upgrade bonuses (Efficiency, Capacity, Synchronization)
+- Satellite network by planet:
+  - Planet icon and name
+  - Total strength and satellite count
+  - Capacity status (e.g., "150/500 cap")
+  - Contribution to current target ("→ X effective")
+  - Color coding: white = safe, orange = attrition active
+  - Hover for attrition percentage when at/above capacity
+
+**Research Targets Panel (Right):**
+- Available targets with icons and names
+- Discovery chance percentage
+- Minimum strength requirement
+- Current scanning target highlighted
+- Prerequisite techs must be researched first
+
 ### How It Works
 
 The discovery system uses the following mechanics:
@@ -36,22 +58,27 @@ This means massive overfilling provides little benefit beyond capacity.
 
 **3. Per-Planet Contribution:**
 
-Each planet's effective satellite strength contributes to discovering a target based on distance:
+Each planet's satellites contribute to discovering a target based on distance. The calculation has two parts:
+
+First, calculate the distance decay factor:
 ```
 distance_factor = e^(-distance / observer_decay) × e^(-distance / target_decay)
+```
+
+Then multiply by the observer's base scale:
+```
 contribution_from_planet = base_contribution_scale × distance_factor
 ```
 
-Where:
-- `base_contribution_scale` = Observer planet's base scale factor (how effective its satellites are at sensing from this planet naturally)
--- The GUI uses this value and multiplies it by the effective_count to show the strength of the network over that planet
-- `distance` = Euclidean distance between observer planet and target on the star map
-- `observer_decay` = Observer planet's `decay_scale` (how well its satellites observe distant objects)
-- `target_decay` = Target's `decay_scale` (how obscure/faint the target is)
-- Signal degrades from BOTH observer limitations AND target properties
-- With both decay=25 at distance=50: distance_factor ≈ 1.8% (vs 13.5% with single decay)
-- The `distance_factor` is what is used to punish the base_contribution_factor by ambient-environmental issues (the observer planet has a dust field around it and the target planet has low albedo for example).
-- The `contribution_from_planet` is what the GUI shows as "→ X effective" - the proportion of strength that reaches the target after distance decay.
+**Parameters:**
+- `base_contribution_scale` = Observer planet's base sensing capability
+- `observer_decay` = How far this planet's satellites can effectively observe (higher = longer range)
+- `target_decay` = How visible/detectable the target is (higher = easier to spot)
+- `distance` = Distance between observer and target on the star map
+
+**GUI Display:** The network panel shows each planet's total strength multiplied by `distance_factor` as "→ X effective" - this is how much of that planet's network strength actually reaches the target.
+
+Example: With decay=25 for both planets at distance=50, distance_factor ≈ 0.018 (only 1.8% of strength reaches the target).
 
 
 **4. Total Network Strength:**
@@ -84,11 +111,9 @@ Satellites at or above capacity can be destroyed each minute due to orbital crow
 - **At capacity:** Base attrition rate applies
 - **Over capacity:** Attrition ramps up exponentially
 
-The GUI shows capacity status with color coding:
+The GUI shows capacity status with color coding and displays attrition percentage when at or above capacity:
 - **White text:** Safe (below capacity)
-- **Orange text:** Attrition active (at or above capacity)
-
-The attrition rate will appear once the capacity is exceed.
+- **Orange text:** Attrition active (at or above capacity, hover for details)
 
 **8. Infinite Research Technologies:**
 
