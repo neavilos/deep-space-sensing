@@ -276,3 +276,7 @@ Users can edit which locations use satellite discovery in Settings â†’ Startup â
   - Network strength contributions are based on quality-weighted strength
   
   This would allow 100 legendary satellites to count as 100 for capacity purposes but contribute 250 strength.
+
+- **More interesting rewards per satellite sent into orbit**
+- **Satellite debris impacts space platforms in orbit:** when satellites collide, it should generate fast-moving debris that actually threatens space platforms in orbit above planets. Punishes sending too many satellites in orbits. Inspired by Kessler syndrome.
+

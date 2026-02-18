@@ -149,7 +149,15 @@ function deep_space_sensing.on_satellite_launched(cargo_pod)
 	end
 
 	local force_name = launching_force.name
-	local origin_planet = cargo_pod.cargo_pod_origin.surface.planet.name
+	local origin = cargo_pod.cargo_pod_origin
+	if not origin or not origin.surface then
+		game.print(
+			"[Deep Space Sensing] Could not identify launch surface (cargo_pod_origin or surface missing). Please report this on the Factorio mod page."
+		)
+		return
+	end
+	local surface = origin.surface
+	local origin_planet = (surface.planet and surface.planet.name) or surface.name
 
 	-- Get the satellite item stack to determine quality
 	local inventory = cargo_pod.get_inventory(defines.inventory.cargo_unit)
